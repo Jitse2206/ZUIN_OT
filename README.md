@@ -20,6 +20,43 @@ De software van dit project is opgesplitst in twee delen:
 
 ---
  
+
+## Opstarten van de code
+ 
+De code is opgesplitst in drie mappen: één voor de hub, één voor handheld v1 en één voor handheld v2.
+ 
+### Hub
+ 
+Om de hub op te starten, open je [`code_hub`](./codes/HUB/code_hub) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
+ 
+- `ArduinoBLE`
+- `rgb_lcd` (Grove LCD library)
+- `Wire`
+Upload de code naar het Arduino-bordje. Bij het opstarten toont het LCD-scherm "ZUIN HUB" en begint het bordje te adverteren als `ZuinHub` via BLE.
+ 
+### Handheld v1
+ 
+Open [`code_handheld_V1`](./codes/HANDHELD_V1/code_handheld_V1) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
+ 
+- `ArduinoBLE`
+- `rgb_lcd` (Grove LCD library)
+- `Wire`
+Upload de code naar het Arduino-bordje. De handheld scant automatisch naar de hub en verbindt zodra `ZuinHub` gevonden wordt.
+ 
+### Handheld v2
+ 
+Open [`code_handheld_v2`](./codes/HANDHELD_V2/code_handheld_v2) in de Arduino IDE. Dit project maakt gebruik van meerdere gegenereerde bestanden vanuit SquareLine Studio die zich bevinden in de map [`extra_bestanden_interface/`](./codes/HANDHELD_V2/extra_bestanden_interface). Zorg dat deze map samen met het hoofdbestand gebruikt wordt. De volgende libraries zijn vereist:
+ 
+- `TFT_eSPI`
+- `lvgl`
+- `I2C_BM8563` (RTC)
+- `BLEDevice`, `BLEUtils`, `BLEScan`, `BLEClient` (ESP32 BLE stack)
+- `lv_xiao_round_screen`
+- `Wire`
+Upload de code naar de Seeed XIAO ESP32S3. Het scherm toont bij het opstarten de huidige tijd en de handheld begint automatisch te scannen naar `ZuinHub`.
+ 
+---
+ 
 ## Functioneel schema
  
 Onderstaand schema toont de volledige logica van het systeem: links de hub, rechts de handheld. De groene stippellijnen geven de BLE-communicatie weer tussen beide apparaten.
