@@ -1,6 +1,6 @@
 # ZUIN — Software
  
-🛠️ Built by `Sam Verkimpe` & `Maxim Depever` & `Jitse Van Laer`  
+🛠️ Built by `Maxim Depever` & `Jitse Van Laer`  
 🔥 Supervised by `prof. dr. Bas Baccarne`, `Yannick Christiaens` & `Wouter Devriese`  
 🌱 Grown at `Ghent University` 🏛️ `Industrial Design Engineering`
  
