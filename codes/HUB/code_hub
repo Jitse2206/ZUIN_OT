@@ -1,0 +1,122 @@
+#include <Wire.h>
+#include "rgb_lcd.h"
+#include <ArduinoBLE.h>
+
+rgb_lcd lcd;
+
+const int buttonPin = 2;
+const int ledAction = 4;
+const int ledIdle = 6;
+
+bool signalActive = false;
+bool wasConnected = false;
+
+String devices[] = { "TV", "Vaatwasser", "Licht", "Laptop", "Oven" };
+int deviceIndex;
+
+unsigned long lastSignalTime = 0;
+unsigned long waitTime = 5000;
+
+BLEService hubService("95ff7bf8-aa6f-4671-82d9-22a8931c5387");
+BLEStringCharacteristic signalChar("95ff7bf8-aa6f-4671-82d9-22a8931c5388", BLERead | BLENotify, 20);
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(buttonPin, INPUT);
+  pinMode(ledAction, OUTPUT);
+  pinMode(ledIdle, OUTPUT);
+
+  lcd.begin(16, 2);
+  lcd.print("ZUIN HUB");
+
+  randomSeed(analogRead(A0));
+
+  digitalWrite(ledIdle, HIGH);
+  digitalWrite(ledAction, LOW);
+
+  if (!BLE.begin()) {
+    Serial.println("BLE start mislukt!");
+    while (1);
+  }
+
+  BLE.setLocalName("ZuinHub");
+  BLE.setAdvertisedService(hubService);
+  hubService.addCharacteristic(signalChar);
+  BLE.addService(hubService);
+  signalChar.writeValue("IDLE");
+  BLE.advertise();
+
+  Serial.println("Advertising...");
+  lastSignalTime = millis();
+  waitTime = random(5000, 15000);
+}
+
+void loop() {
+  BLEDevice central = BLE.central();
+
+  if (central && central.connected()) {
+    wasConnected = true;
+
+    unsigned long currentMillis = millis();
+
+    if (!signalActive) {
+      digitalWrite(ledIdle, HIGH);
+      digitalWrite(ledAction, LOW);
+      lcd.setCursor(0, 1);
+      lcd.print("Wachten...   ");
+
+      if (currentMillis - lastSignalTime >= waitTime) {
+        lastSignalTime = currentMillis;
+        waitTime = random(5000, 15000);
+        sendSignal();
+      }
+    }
+
+    if (signalActive && digitalRead(buttonPin) == HIGH) {
+      turnOffDevice();
+    }
+
+  } else if (wasConnected) {
+    Serial.println("Disconnected");
+    wasConnected = false;
+    lastSignalTime = millis();
+  }
+
+  BLE.poll();
+}
+
+void sendSignal() {
+  signalActive = true;
+  deviceIndex = random(0, 5);
+
+  digitalWrite(ledIdle, LOW);
+  digitalWrite(ledAction, HIGH);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Apparaat aan!");
+  lcd.setCursor(0, 1);
+  lcd.print("Druk om uit");
+
+  signalChar.writeValue("SIGNAL");
+  Serial.println("Signaal verstuurd");
+}
+
+void turnOffDevice() {
+  digitalWrite(ledAction, LOW);
+  digitalWrite(ledIdle, HIGH);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Uitgezet:");
+  lcd.setCursor(0, 1);
+  lcd.print(devices[deviceIndex]);
+
+  signalChar.writeValue("IDLE");
+
+  delay(3000);
+  signalActive = false;
+  lastSignalTime = millis();
+  waitTime = random(5000, 15000);
+}

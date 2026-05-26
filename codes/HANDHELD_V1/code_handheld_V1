@@ -1,0 +1,126 @@
+#include <ArduinoBLE.h>
+#include <Wire.h>
+#include "rgb_lcd.h"
+
+rgb_lcd lcd;
+
+const int hapticPin = 6;
+const int ledPin = 4;
+
+const char* targetName = "ZuinHub";
+const char* charUuid = "95ff7bf8-aa6f-4671-82d9-22a8931c5388";
+
+bool signalActive = false;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(hapticPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+
+  digitalWrite(hapticPin, LOW);
+  digitalWrite(ledPin, LOW);
+
+  lcd.begin(16, 2);
+  lcd.setCursor(0, 0);
+  lcd.print("ZUIN HANDHELD");
+
+  if (!BLE.begin()) {
+    Serial.println("BLE MISLUKT");
+    while (1);
+  }
+
+  BLE.scan();
+  Serial.println("Scanning...");
+}
+
+void loop() {
+  BLE.poll();
+
+  BLEDevice peripheral = BLE.available();
+
+  if (peripheral) {
+    Serial.print("Found: ");
+    Serial.print(peripheral.localName());
+    Serial.print(" (");
+    Serial.print(peripheral.address());
+    Serial.println(")");
+
+    if (peripheral.localName() != targetName) return;
+
+    BLE.stopScan();
+
+    if (peripheral.connect()) {
+      Serial.println("Connected");
+
+      if (peripheral.discoverAttributes()) {
+        BLECharacteristic characteristic = peripheral.characteristic(charUuid);
+
+        if (characteristic && characteristic.subscribe()) {
+          lcd.clear();
+          lcd.setCursor(0, 0);
+          lcd.print("Verbonden!");
+
+          while (peripheral.connected()) {
+            BLE.poll();
+
+            if (characteristic.valueUpdated()) {
+              byte buffer[20];
+              int length = characteristic.readValue(buffer, 20);
+
+              String value = "";
+              for (int i = 0; i < length; i++) {
+                value += (char)buffer[i];
+              }
+
+              Serial.print("Ontvangen: ");
+              Serial.println(value);
+
+              if (value == "SIGNAL" && !signalActive) {
+                signalActive = true;
+                activateSignal();
+              } else if (value == "IDLE" && signalActive) {
+                signalActive = false;
+                deactivateSignal();
+              }
+            }
+          }
+        }
+      }
+
+      Serial.println("Disconnected");
+      peripheral.disconnect();
+      deactivateSignal();
+      signalActive = false;
+    }
+
+    BLE.scan();
+  }
+}
+
+void activateSignal() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Apparaat aan!");
+  lcd.setCursor(0, 1);
+  lcd.print("Ga naar hub!");
+
+  digitalWrite(ledPin, HIGH);
+
+  // Haptic motor 3x trillen
+  for (int i = 0; i < 3; i++) {
+    digitalWrite(hapticPin, HIGH);
+    delay(300);
+    digitalWrite(hapticPin, LOW);
+    delay(200);
+  }
+}
+
+void deactivateSignal() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("ZUIN HANDHELD");
+
+  digitalWrite(ledPin, LOW);
+  digitalWrite(hapticPin, LOW);
+}
