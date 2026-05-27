@@ -162,3 +162,43 @@ De handheld fungeert als **central**: hij scant naar `ZuinHub`, verbindt, en sub
 |--------|-----------|
 | `"SIGNAL"` | Een apparaat verbruikt energie — kind moet actie ondernemen |
 | `"IDLE"` | Apparaat uitgeschakeld — systeem terug in rust |
+
+---
+
+## Handheld v1 vs v2
+
+| Eigenschap | Handheld v1 | Handheld v2 |
+|---|---|---|
+| Microcontroller | Arduino (ArduinoBLE) | Seeed XIAO ESP32S3 |
+| Scherm | 16x2 LCD tekst | Rond 240x240 TFT kleurentouchscreen |
+| UI | Tekstueel | LVGL grafische interface (SquareLine Studio) |
+| Klok | ❌ | ✅ RTC (BM8563) |
+| Feedback | LED + haptic motor (3x trillen) | Visuele vlammetjes op scherm |
+| Touch | ❌ | ✅ Capacitief touchscreen |
+| BLE library | `ArduinoBLE` | `BLEDevice` (ESP32 stack) |
+
+---
+
+## Gebruikte libraries
+
+### Hub & Handheld v1
+
+| Library | Functie |
+|---------|---------|
+| `ArduinoBLE` | Bluetooth Low Energy communicatie |
+| `rgb_lcd` | Aansturing Grove RGB LCD-scherm via I2C |
+| `Wire` | I2C communicatie |
+
+### Handheld v2
+
+| Library | Functie |
+|---------|---------|
+| `TFT_eSPI` | Aansturing TFT-display via SPI |
+| `lvgl` | Grafische UI-library voor embedded systemen |
+| `lv_xiao_round_screen` | Display- en touchdriver voor Seeed XIAO round display |
+| `I2C_BM8563` | RTC-module voor tijdsbeheer |
+| `BLEDevice` / `BLEClient` | Bluetooth Low Energy (ESP32 stack) |
+| `Wire` | I2C communicatie |
+
+
+
