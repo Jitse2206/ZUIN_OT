@@ -63,3 +63,84 @@ Onderstaand schema toont de volledige logica van het systeem: links de hub, rech
  
 <p align="center">
   <img src="Img/zuin_systeem_flowchart.svg" width="88%">
+
+
+---
+
+## Validatie inputs
+
+### Knop (Hub)
+
+De hub bevat een drukknop die de gebruiker (het kind) in staat stelt om aan te geven dat een apparaat uitgeschakeld is. De knop is verbonden op pin 2 van het Arduino-bordje. Wanneer de knop ingedrukt wordt terwijl een signaal actief is, roept de hub de functie `turnOffDevice()` aan. Het LCD-scherm toont vervolgens welk apparaat uitgeschakeld werd.
+
+<p align ="center">
+//FOTO BEDRADING
+
+De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino library.
+
+### Touchscreen (Handheld v2)
+
+De handheld v2 maakt gebruik van een capacitief touchscreen dat geïntegreerd is op de Seeed XIAO round display. Aanrakingen worden uitgelezen via de `chsc6x_get_xy()` functie uit de `lv_xiao_round_screen` driver. De touchcoördinaten worden doorgegeven aan LVGL via een input device driver (`lv_indev_drv_t`).
+
+Wanneer een kind op een vlammetje tikt op het scherm, wordt dit via een LVGL event callback (`LV_EVENT_CLICKED`) verwerkt en verdwijnt het vlammetje.
+
+<p align = "center">
+//foto bedradingsschema touchscreen
+
+---
+
+## Validatie outputs
+
+### LCD-scherm 16x2 (Hub & Handheld v1)
+
+Zowel de hub als handheld v1 maken gebruik van een Grove RGB LCD-scherm met 16 kolommen en 2 rijen. Dit scherm toont de huidige toestand van het systeem in leesbare tekst.
+
+**Hub:** toont bij opstart "ZUIN HUB", daarna "Wachten..." tijdens idle, "Apparaat aan! / Druk om uit" bij een actief signaal, en "Uitgezet: [apparaat]" na bevestiging.
+
+**Handheld v1:** toont "ZUIN HANDHELD" tijdens idle, en "Apparaat aan! / Ga naar hub!" wanneer een signaal ontvangen wordt.
+
+<p align = "center">
+//foto bedradingsschema LCD hub
+
+De code maakt gebruik van de `rgb_lcd` library voor aansturing van het scherm via I2C.
+
+### Rond TFT-kleurentouchscreen (Handheld v2)
+
+De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via de `TFT_eSPI` library in combinatie met LVGL. De UI-schermen zijn ontworpen in SquareLine Studio en gegenereerd als C-bronbestanden (`ui_Screen1.c` t.e.m. `ui_Screen4.c`).
+
+- **Screen 1** — hoofdscherm met lopende klok (via RTC)
+- **Screen 2, 3, 4** — elk een ander vlammetje dat verschijnt bij een energiesignaal
+
+<p align = "center">
+//foto handheld v2 scherm in werking
+
+De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`).
+
+### LED (Hub & Handheld v1)
+
+**Hub:** twee LEDs geven de toestand van het systeem aan. De idle-LED (pin 6) brandt wanneer het systeem wacht. De action-LED (pin 4) brandt wanneer een signaal actief is.
+
+**Handheld v1:** één LED op pin 4 licht op wanneer een signaal ontvangen wordt van de hub.
+
+<p align = "center">
+//foto bedradingsschema LED
+
+
+De LEDs worden aangestuurd via `digitalWrite()`.
+
+### Haptic motor (Handheld v1)
+
+De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wordt, trilt de motor drie keer kort (`300ms aan, 200ms uit`). Dit geeft het kind een tastbare melding zonder dat het naar het scherm hoeft te kijken.
+
+<p align = "center">
+//foto bedradingsschema haptic motor
+
+
+### RTC-klok (Handheld v2)
+
+De handheld v2 bevat een I2C BM8563 RTC-module die de huidige tijd bijhoudt. De tijd wordt elke seconde uitgelezen en weergegeven op het hoofdscherm via een LVGL label (`ui_ClockLabel`). De RTC is verbonden via SDA (pin 5) en SCL (pin 6).
+
+<p align = "center">
+//foto bedradingsschema RCT
+
+De code maakt gebruik van de `I2C_BM8563` library.
