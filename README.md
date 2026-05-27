@@ -144,3 +144,21 @@ De handheld v2 bevat een I2C BM8563 RTC-module die de huidige tijd bijhoudt. De 
 //foto bedradingsschema RCT
 
 De code maakt gebruik van de `I2C_BM8563` library.
+
+---
+
+## BLE communicatie
+
+De hub en handheld communiceren draadloos via **Bluetooth Low Energy (BLE)**. Beide apparaten gebruiken dezelfde service- en characteristic-UUID's:
+
+- **Service UUID:** `95ff7bf8-aa6f-4671-82d9-22a8931c5387`
+- **Characteristic UUID:** `95ff7bf8-aa6f-4671-82d9-22a8931c5388`
+
+De hub fungeert als **peripheral**: hij adverteert zich als `ZuinHub` en schrijft `"SIGNAL"` of `"IDLE"` naar de characteristic.
+
+De handheld fungeert als **central**: hij scant naar `ZuinHub`, verbindt, en subscribet op de characteristic via notify. Bij disconnect herverbindt de handheld automatisch (elke 5 seconden opnieuw scannen).
+
+| Waarde | Betekenis |
+|--------|-----------|
+| `"SIGNAL"` | Een apparaat verbruikt energie — kind moet actie ondernemen |
+| `"IDLE"` | Apparaat uitgeschakeld — systeem terug in rust |
