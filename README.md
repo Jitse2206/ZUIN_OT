@@ -87,6 +87,8 @@ Wanneer een kind op de knop van de hub duwt, wordt dit via een LVGL event callba
 <p align = "center">
   <Img src="Img/HANDHELD_V2.JPG" width='40%'>
 
+Wat betreft de microcontroller: de ESP32-S3 wordt eenvoudig ingeplugged in de achterkant van het scherm, er is dus geen gecompliceerde bedrading nodig.
+
 ---
 
 ## Validatie outputs
