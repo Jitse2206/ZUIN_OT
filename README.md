@@ -113,7 +113,7 @@ De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via
 - **Screen 2, 3, 4** — elk een ander vlammetje dat verschijnt bij een energiesignaal
 
 <p align = "center">
-  <Img src="Horloge_tijd.JPG" width='40%'>
+  <Img src="Horloge_eiland.JPG" width='40%'>
   <Img src="Horloge_tijd.JPG" width='40%'>
 
 De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`).
