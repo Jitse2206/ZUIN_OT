@@ -144,7 +144,7 @@ De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wo
 De handheld v2 bevat een I2C BM8563 RTC-module die de huidige tijd bijhoudt. De tijd wordt elke seconde uitgelezen en weergegeven op het hoofdscherm via een LVGL label (`ui_ClockLabel`). De RTC is verbonden via SDA (pin 5) en SCL (pin 6).
 
 <p align = "center">
-  <Img src="Img/HANDHELD_V2.JPG" width='40%'>
+  <Img src="Img/Horloge_tijd.JPG" width='40%'>
 
 De code maakt gebruik van de `I2C_BM8563` library.
 
