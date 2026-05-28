@@ -126,8 +126,6 @@ De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui
 
 <p align = "center">
   <Img src="Img/HUB.jpg" width='40%'> 
-
-<p align = "center">
   <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
 
