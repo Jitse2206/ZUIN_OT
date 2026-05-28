@@ -200,5 +200,45 @@ De handheld fungeert als **central**: hij scant naar `ZuinHub`, verbindt, en sub
 | `BLEDevice` / `BLEClient` | Bluetooth Low Energy (ESP32 stack) |
 | `Wire` | I2C communicatie |
 
+---
+
+## Mappenstructuur
+
+```
+ZUIN-software/
+├── src/
+│   ├── hub/
+│   │   └── HUB.ino
+│   ├── handheld_v1/
+│   │   └── HANDHELD.ino
+│   └── handheld_v2/
+│       ├── sketch_apr30a.ino
+│       ├── driver.h
+│       ├── ui.c / ui.h
+│       ├── ui_Screen1.c / .h
+│       ├── ui_Screen2.c / .h
+│       ├── ui_Screen3.c / .h
+│       ├── ui_Screen4.c / .h
+│       ├── ui_helpers.c / .h
+│       ├── ui_events.h
+│       ├── ui_comp_hook.c
+│       ├── ui_img_761137763.c
+│       ├── ui_img_1057345124.c
+│       ├── ui_img_1448235480.c
+│       └── ui_img_palm_trees_and_island_png_clipart_imag....c
+├── img/
+│   └── (afbeeldingen voor README)
+├── docs/
+│   └── (aanvullende documentatie)
+├── LICENSE
+└── README.md
+```
+
+---
+
+## Licentie
+
+- **Software en code:** [MIT License](LICENSE)
+
 
 
