@@ -74,7 +74,7 @@ Onderstaand schema toont de volledige logica van het systeem: links de hub, rech
 De hub bevat een drukknop die de gebruiker (het kind) in staat stelt om aan te geven dat een apparaat uitgeschakeld is. De knop is verbonden op pin 2 van het Arduino-bordje. Wanneer de knop ingedrukt wordt terwijl een signaal actief is, roept de hub de functie `turnOffDevice()` aan. Het LCD-scherm toont vervolgens welk apparaat uitgeschakeld werd.
 
 <p align ="center">
-  <Img src="Img/HUB.jpg" width='88%'>
+  <Img src="Img/HUB.jpg" width='40%'>
 
 
 De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino library.
@@ -86,7 +86,7 @@ De handheld v2 maakt gebruik van een capacitief touchscreen dat geïntegreerd is
 Wanneer een kind op de knop van de hub duwt, wordt dit via een LVGL event callback (`LV_EVENT_CLICKED`) verwerkt en verdwijnt het vlammetje.
 
 <p align = "center">
-//foto bedradingsschema touchscreen
+  <Img src="Img/HANDHELD_V2.JPG" width='40%'>
 
 ---
 
@@ -101,7 +101,7 @@ Zowel de hub als handheld v1 maken gebruik van een Grove RGB LCD-scherm met 16 k
 **Handheld v1:** toont "ZUIN HANDHELD" tijdens idle, en "Apparaat aan! / Ga naar hub!" wanneer een signaal ontvangen wordt.
 
 <p align = "center">
-//foto bedradingsschema LCD hub
+  <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
 De code maakt gebruik van de `rgb_lcd` library voor aansturing van het scherm via I2C.
 
@@ -113,7 +113,8 @@ De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via
 - **Screen 2, 3, 4** — elk een ander vlammetje dat verschijnt bij een energiesignaal
 
 <p align = "center">
-//foto handheld v2 scherm in werking
+  <Img src="Horloge_tijd.JPG" width='40%'>
+  <Img src="Horloge_tijd.JPG" width='40%'>
 
 De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`).
 
