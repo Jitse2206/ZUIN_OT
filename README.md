@@ -113,8 +113,8 @@ De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via
 - **Screen 2, 3, 4** — elk een ander vlammetje dat verschijnt bij een energiesignaal
 
 <p align = "center">
-  <Img src="Horloge_eiland.JPG" width='40%'>
-  
+  <Img src="Horloge_vuur.JPG" width='40%'>
+
 <p align = "center">
   <Img src="Horloge_tijd.JPG" width='40%'>
 
@@ -127,7 +127,10 @@ De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui
 **Handheld v1:** één LED op pin 4 licht op wanneer een signaal ontvangen wordt van de hub.
 
 <p align = "center">
-//foto bedradingsschema LED
+  <Img src="HUB.jpg" width='40%'> 
+
+<p align = "center">
+  <Img src="HANDHELD_V1.jpg" width='40%'>
 
 
 De LEDs worden aangestuurd via `digitalWrite()`.
@@ -137,7 +140,7 @@ De LEDs worden aangestuurd via `digitalWrite()`.
 De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wordt, trilt de motor drie keer kort (`300ms aan, 200ms uit`). Dit geeft het kind een tastbare melding zonder dat het naar het scherm hoeft te kijken.
 
 <p align = "center">
-//foto bedradingsschema haptic motor
+  <Img src="HANDHELD_V1.jpg" width='40%'>
 
 
 ### RTC-klok (Handheld v2)
@@ -145,7 +148,7 @@ De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wo
 De handheld v2 bevat een I2C BM8563 RTC-module die de huidige tijd bijhoudt. De tijd wordt elke seconde uitgelezen en weergegeven op het hoofdscherm via een LVGL label (`ui_ClockLabel`). De RTC is verbonden via SDA (pin 5) en SCL (pin 6).
 
 <p align = "center">
-//foto bedradingsschema RCT
+  <Img src="Img/HANDHELD_V2.JPG" width='40%'>
 
 De code maakt gebruik van de `I2C_BM8563` library.
 
