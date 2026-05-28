@@ -74,7 +74,7 @@ Onderstaand schema toont de volledige logica van het systeem: links de hub, rech
 De hub bevat een drukknop die de gebruiker (het kind) in staat stelt om aan te geven dat een apparaat uitgeschakeld is. De knop is verbonden op pin 2 van het Arduino-bordje. Wanneer de knop ingedrukt wordt terwijl een signaal actief is, roept de hub de functie `turnOffDevice()` aan. Het LCD-scherm toont vervolgens welk apparaat uitgeschakeld werd.
 
 <p align ="center">
-  <im src="Img/HUB.jpg" width='88%'>
+  <Img src="Img/HUB.jpg" width='88%'>
 
 
 De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino library.
