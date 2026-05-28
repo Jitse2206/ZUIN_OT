@@ -82,7 +82,7 @@ De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino li
 
 De handheld v2 maakt gebruik van een capacitief touchscreen dat geïntegreerd is op de Seeed XIAO round display. Aanrakingen worden uitgelezen via de `chsc6x_get_xy()` functie uit de `lv_xiao_round_screen` driver. De touchcoördinaten worden doorgegeven aan LVGL via een input device driver (`lv_indev_drv_t`).
 
-Wanneer een kind op een vlammetje tikt op het scherm, wordt dit via een LVGL event callback (`LV_EVENT_CLICKED`) verwerkt en verdwijnt het vlammetje.
+Wanneer een kind op de knop van de hub duwt, wordt dit via een LVGL event callback (`LV_EVENT_CLICKED`) verwerkt en verdwijnt het vlammetje.
 
 <p align = "center">
 //foto bedradingsschema touchscreen
