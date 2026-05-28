@@ -113,10 +113,8 @@ De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via
 - **Screen 2, 3, 4** — elk een ander vlammetje dat verschijnt bij een energiesignaal
 
 <p align = "center">
-  <Img src="Horloge_vuur.JPG" width='40%'>
-
-<p align = "center">
-  <Img src="Horloge_tijd.JPG" width='40%'>
+  <Img src="Img/Horloge_vuur.JPG" width='40%'>
+  <Img src="Img/Horloge_tijd.JPG" width='40%'>
 
 De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`).
 
@@ -127,10 +125,10 @@ De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui
 **Handheld v1:** één LED op pin 4 licht op wanneer een signaal ontvangen wordt van de hub.
 
 <p align = "center">
-  <Img src="HUB.jpg" width='40%'> 
+  <Img src="Img/HUB.jpg" width='40%'> 
 
 <p align = "center">
-  <Img src="HANDHELD_V1.jpg" width='40%'>
+  <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
 
 De LEDs worden aangestuurd via `digitalWrite()`.
@@ -140,7 +138,7 @@ De LEDs worden aangestuurd via `digitalWrite()`.
 De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wordt, trilt de motor drie keer kort (`300ms aan, 200ms uit`). Dit geeft het kind een tastbare melding zonder dat het naar het scherm hoeft te kijken.
 
 <p align = "center">
-  <Img src="HANDHELD_V1.jpg" width='40%'>
+  <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
 
 ### RTC-klok (Handheld v2)
