@@ -27,7 +27,7 @@ De code is opgesplitst in drie mappen: één voor de hub, één voor handheld v1
  
 ### Hub
  
-Om de hub op te starten, open je [`code_hub`](./codes/HUB/code_hub) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
+Om de hub op te starten, open je [`code_hub`](./codes/HUB/code_hub.ino) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
  
 - `ArduinoBLE`
 - `rgb_lcd` (Grove LCD library)
@@ -36,7 +36,7 @@ Upload de code naar het Arduino-bordje. Bij het opstarten toont het LCD-scherm "
  
 ### Handheld v1
  
-Open [`code_handheld_V1`](./codes/HANDHELD_V1/code_handheld_V1) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
+Open [`code_handheld_V1`](./codes/HANDHELD_V1/code_handheld_V1.ino) in de Arduino IDE. Zorg dat de volgende libraries geïnstalleerd zijn:
  
 - `ArduinoBLE`
 - `rgb_lcd` (Grove LCD library)
@@ -45,7 +45,7 @@ Upload de code naar het Arduino-bordje. De handheld scant automatisch naar de hu
  
 ### Handheld v2
  
-Open [`code_handheld_v2`](./codes/HANDHELD_V2/code_handheld_v2) in de Arduino IDE. Dit project maakt gebruik van meerdere gegenereerde bestanden vanuit SquareLine Studio die zich bevinden in de map [`extra_bestanden_interface/`](./codes/HANDHELD_V2/extra_bestanden_interface). Zorg dat deze map samen met het hoofdbestand gebruikt wordt. De volgende libraries zijn vereist:
+Open [`code_handheld_v2`](./codes/HANDHELD_V2/code_handheld_v2.ino) in de Arduino IDE. Dit project maakt gebruik van meerdere gegenereerde bestanden vanuit SquareLine Studio die zich bevinden in de map [`extra_bestanden_interface/`](./codes/HANDHELD_V2/extra_bestanden_interface). Zorg dat deze map samen met het hoofdbestand gebruikt wordt. De volgende libraries zijn vereist:
  
 - `TFT_eSPI`
 - `lvgl`
