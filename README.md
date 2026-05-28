@@ -76,8 +76,7 @@ De hub bevat een drukknop die de gebruiker (het kind) in staat stelt om aan te g
 <p align ="center">
   <Img src="Img/HUB.jpg" width='40%'>
 
-
-De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino library.
+De code maakt gebruik van de `digitalRead()` functie van de standaard Arduino library. De testcode is te vinden onder [Test_button.ino](./codes/HUB/Testcodes_Hub/Test_button.ino).
 
 ### Touchscreen (Handheld v2)
 
@@ -103,7 +102,7 @@ Zowel de hub als handheld v1 maken gebruik van een Grove RGB LCD-scherm met 16 k
 <p align = "center">
   <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
-De code maakt gebruik van de `rgb_lcd` library voor aansturing van het scherm via I2C.
+De code maakt gebruik van de `rgb_lcd` library voor aansturing van het scherm via I2C. De testcode voor de hub is te vinden onder [Test_Scherm.ino](./codes/HUB/Testcodes_Hub/Test_Scherm.ino) en voor handheld v1 onder [Test_Scherm.ino](./codes/HANDHELD_V1/Testcode_handheld_v1/Test_Scherm.ino).
 
 ### Rond TFT-kleurentouchscreen (Handheld v2)
 
@@ -116,7 +115,7 @@ De handheld v2 gebruikt een rond TFT-display van 240x240 pixels, aangestuurd via
   <Img src="Img/Horloge_vuur.JPG" width='40%'>
   <Img src="Img/Horloge_tijd.JPG" width='40%'>
 
-De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`).
+De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui_img_761137763.c`, `ui_img_1057345124.c`, `ui_img_1448235480.c`) en een achtergrond van een eiland (`ui_img_palm_trees_and_island_png_clipart_imag...c`). De testcode is te vinden onder [Test_XIAO_ESP32-S3.ino](./codes/HANDHELD_V2/Testcodes_Handheld_v2/Test_XIAO_ESP32-S3.ino).
 
 ### LED (Hub & Handheld v1)
 
@@ -128,8 +127,7 @@ De drie vlammetjes zijn opgeslagen als gecompileerde C-afbeeldingsbestanden (`ui
   <Img src="Img/HUB.jpg" width='40%'> 
   <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
-
-De LEDs worden aangestuurd via `digitalWrite()`.
+De LEDs worden aangestuurd via `digitalWrite()`. De testcode voor de hub is te vinden onder [Test_Leds.ino](./codes/HUB/Testcodes_Hub/Test_Leds.ino) en voor handheld v1 onder [Test_Led.ino](./codes/HANDHELD_V1/Testcode_handheld_v1/Test_Led.ino).
 
 ### Haptic motor (Handheld v1)
 
@@ -138,6 +136,7 @@ De handheld v1 bevat een haptic motor op pin 6. Wanneer een signaal ontvangen wo
 <p align = "center">
   <Img src="Img/HANDHELD_V1.jpg" width='40%'>
 
+De testcode is te vinden onder [Test_Haptic_motor.ino](./codes/HANDHELD_V1/Testcode_handheld_v1/Test_Haptic_motor.ino).
 
 ### RTC-klok (Handheld v2)
 
